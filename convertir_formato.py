@@ -1,6 +1,9 @@
+from typing import cast
+
 from docx import Document
 from docx.shared import Inches, Pt
 from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.styles.style import _ParagraphStyle
 
 doc = Document()
 sec = doc.sections[0]
@@ -8,7 +11,7 @@ sec.top_margin = Inches(0.6)
 sec.bottom_margin = Inches(0.65)
 sec.left_margin = Inches(0.85)
 sec.right_margin = Inches(0.85)
-style = doc.styles['Normal']
+style = cast(_ParagraphStyle, doc.styles['Normal'])
 style.font.name = 'Arial'
 style.font.size = Pt(11)
 style.paragraph_format.space_after = Pt(0)
